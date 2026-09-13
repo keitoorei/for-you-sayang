@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>For You 💗</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+
+            background:
+                radial-gradient(circle at 20% 20%, white 0 2%, transparent 3%),
+                radial-gradient(circle at 80% 30%, white 0 1.5%, transparent 2%),
+                radial-gradient(circle at 30% 80%, white 0 1.5%, transparent 2%),
+                linear-gradient(135deg, #ffc1d9, #ffe8f1, #ffd1e3);
+
+            background-size:
+                130px 130px,
+                170px 170px,
+                210px 210px,
+                100% 100%;
+        }
+
+        /* CORNER HAMSTERS */
+
+        .hamster {
+            position: fixed;
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            z-index: 2;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .hamster1 {
+            top: 5%;
+            left: 5%;
+            transform: rotate(-10deg);
+        }
+
+        .hamster2 {
+            top: 7%;
+            right: 5%;
+            transform: rotate(10deg);
+        }
+
+        .hamster3 {
+            bottom: 5%;
+            left: 6%;
+            transform: rotate(8deg);
+        }
+
+        .hamster4 {
+            bottom: 6%;
+            right: 6%;
+            transform: rotate(-8deg);
+        }
+
+        /* MAIN HAMSTER */
+
+        .main-hamster {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            margin-bottom: 5px;
+        }
+
+        /* SPARKLES */
+
+        .sparkle {
+            position: fixed;
+            color: #ff7fab;
+            font-size: 25px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .s1 {
+            top: 18%;
+            left: 25%;
+        }
+
+        .s2 {
+            top: 25%;
+            right: 22%;
+        }
+
+        .s3 {
+            bottom: 25%;
+            left: 23%;
+        }
+
+        .s4 {
+            bottom: 20%;
+            right: 25%;
+        }
+
+        /* MAIN BOX */
+
+        .container {
+            position: relative;
+            z-index: 5;
+            text-align: center;
+            width: 90%;
+            max-width: 560px;
+            padding: 30px;
+
+            background: rgba(255, 255, 255, 0.8);
+            border: 3px solid white;
+            border-radius: 30px;
+
+            box-shadow:
+                0 15px 40px rgba(255, 91, 145, 0.2),
+                0 0 30px rgba(255, 180, 210, 0.6);
+
+            backdrop-filter: blur(8px);
+        }
+
+        h1 {
+            color: #ff4f87;
+            font-size: 32px;
+            line-height: 1.4;
+            margin: 0 0 25px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        button {
+            border: none;
+            padding: 13px 28px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        #yes {
+            background: #ff6f9f;
+            color: white;
+
+            box-shadow:
+                0 5px 15px rgba(255, 105, 150, 0.3);
+        }
+
+        #yes:hover {
+            transform: scale(1.1);
+            background: #ff4f87;
+        }
+
+        #no {
+            background: #eeeeee;
+            color: #666;
+        }
+
+        #no:hover {
+            transform: scale(1.05);
+        }
+
+        #back {
+            background: #ff6f9f;
+            color: white;
+            margin-top: 15px;
+        }
+
+        #back:hover {
+            transform: scale(1.05);
+            background: #ff4f87;
+        }
+
+        /* FLOATING HEARTS */
+
+        .heart {
+            position: fixed;
+            color: #ff6f9f;
+            font-size: 20px;
+            pointer-events: none;
+            animation: float 5s linear forwards;
+            z-index: 2;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-10vh) rotate(30deg);
+                opacity: 0;
+            }
+        }
+
+        /* PHONE */
+
+        @media (max-width: 600px) {
+
+            h1 {
+                font-size: 25px;
+            }
+
+            .container {
+                padding: 25px 20px;
+            }
+
+            .hamster {
+                width: 80px;
+                height: 80px;
+            }
+
+            .main-hamster {
+                width: 120px;
+                height: 120px;
+            }
+
+            .hamster1 {
+                top: 5%;
+                left: 2%;
+            }
+
+            .hamster2 {
+                top: 5%;
+                right: 2%;
+            }
+
+            .hamster3 {
+                bottom: 4%;
+                left: 2%;
+            }
+
+            .hamster4 {
+                bottom: 4%;
+                right: 2%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- CORNER HAMSTERS -->
+
+<img src="images/hamster1.png"
+     class="hamster hamster1"
+     alt="cute hamster">
+
+<img src="images/hamster2.png"
+     class="hamster hamster2"
+     alt="cute hamster">
+
+<img src="images/hamster3.png"
+     class="hamster hamster3"
+     alt="cute hamster">
+
+<img src="images/hamster4.png"
+     class="hamster hamster4"
+     alt="cute hamster">
+
+
+<!-- SPARKLES -->
+
+<div class="sparkle s1">✦</div>
+<div class="sparkle s2">✧</div>
+<div class="sparkle s3">♡</div>
+<div class="sparkle s4">✦</div>
+
+
+<!-- MAIN CONTENT -->
+
+<div class="container">
+
+    <img src="images/hamster5.gif"
+         class="main-hamster"
+         alt="cute hamster">
+
+    <h1>
+        i love you so much,<br>
+        do you love me as much? 💗
+    </h1>
+
+    <div class="buttons">
+
+        <button id="yes" onclick="yesClicked()">
+            Yes. &lt;3
+        </button>
+
+        <button id="no" onclick="noClicked()">
+            No.
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    /* NO CHANGES INTO YES */
+
+    function noClicked() {
+
+        const noButton = document.getElementById("no");
+
+        noButton.innerHTML = "Yes. &lt;3";
+        noButton.id = "yes";
+        noButton.onclick = yesClicked;
+
+    }
+
+
+    /* YES BUTTON */
+
+    function yesClicked() {
+
+        document.querySelector(".container").innerHTML = `
+
+            <img src="images/hamster6.png"
+                 class="main-hamster"
+                 alt="happy hamster">
+
+            <h1>
+                YAYYYYY! &lt;3
+            </h1>
+
+            <p style="
+                font-size: 21px;
+                color: #ff4f87;
+                font-weight: bold;
+            ">
+                I love you more baby! &lt;3
+            </p>
+
+            <button id="back" onclick="goBack()">
+                Go Back
+            </button>
+
+        `;
+
+    }
+
+
+    /* GO BACK */
+
+    function goBack() {
+
+        location.reload();
+
+    }
+
+
+    /* FLOATING HEARTS */
+
+    function createHeart() {
+
+        const heart = document.createElement("div");
+
+        heart.classList.add("heart");
+
+        const hearts = [
+            "♡",
+            "♥"
+        ];
+
+        heart.innerHTML =
+            hearts[
+                Math.floor(
+                    Math.random() * hearts.length
+                )
+            ];
+
+        heart.style.left =
+            Math.random() * 100 + "vw";
+
+        heart.style.fontSize =
+            (15 + Math.random() * 20) + "px";
+
+        heart.style.animationDuration =
+            (3 + Math.random() * 3) + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 6000);
+
+    }
+
+
+    setInterval(createHeart, 500);
+
+</script>
+
+</body>
+</html>
